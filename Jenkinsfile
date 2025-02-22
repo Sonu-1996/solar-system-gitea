@@ -9,6 +9,7 @@ pipeline {
     stage('test') {
       steps {
         tool 'docker'
+        isUnix()
       }
     }
 
