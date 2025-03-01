@@ -8,8 +8,7 @@ pipeline {
   stages {
     stage('test') {
       steps {
-        tool 'docker'
-        isUnix()
+        isunix()
       }
     }
 
