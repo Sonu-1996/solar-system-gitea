@@ -1,16 +1,15 @@
 pipeline {
-  agent {
-    docker {
-      image 'ubuntu:latest'
-    }
-
-  }
-  stages {
-    stage('test') {
-      steps {
-        tool 'docker'
+  agent any
+   
+  stages{
+    stage('Test Stage'){
+      steps{
+           sh '''
+                 node -v 
+                 npm -v
+              '''
       }
     }
-
   }
+
 }
