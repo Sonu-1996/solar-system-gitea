@@ -17,6 +17,7 @@ pipeline {
                  node -v 
                  npm -v
                  echo "hello $PERSON"
+                 docker --version
               '''
       }
     }
