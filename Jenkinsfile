@@ -14,7 +14,6 @@ pipeline {
         steps{
             sh 'npm install --no-audit'
         }
-
       }
 
     stage('NPM Dependency Audit '){
@@ -29,9 +28,19 @@ pipeline {
           catch (err) {
             echo "Caught: ${err}"
             currentBuild.result = 'SUCCESS'
-            } 
+          } 
         }   
       }
+    }
+    stage('OWASP Dependency Check'){
+      steps {
+        dependencyCheck additionalArguments: '''
+        --project \'pipeline-learn\'
+        --scan \'.\'
+        --format \'ALL\' 
+        --prettyPrint''', odcInstallation: 'OWASP Dependency Check'
+      }
+
     }
   }
 }
