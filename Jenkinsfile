@@ -36,7 +36,7 @@ pipeline {
       steps {
         dependencyCheck additionalArguments: '''
         --project \'pipeline-learn\'
-        --scan \'.\'
+        --scan \'./\'
         --format \'ALL\' 
         --prettyPrint''', odcInstallation: 'OWASP Dependency Check'
       }
