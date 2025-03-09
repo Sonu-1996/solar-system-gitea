@@ -15,7 +15,6 @@ pipeline {
             sh 'npm install --no-audit'
         }
       }
-    parallel {
       stage('NPM Dependency Audit '){
         steps {
           script{
@@ -32,7 +31,7 @@ pipeline {
           }   
         }
       }
-      stage('OWASP Dependency Check'){
+      stage('OWASP Dependency Check'){  
         steps {
           dependencyCheck additionalArguments: '''
           --project \'pipeline-learn\'
@@ -43,8 +42,7 @@ pipeline {
           publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: './', reportFiles: 'dependency-check-jenkins.html', reportName: 'Dependency Check HTML Report', reportTitles: '', useWrapperFileDirectly: true])
         }
 
-      }
-    }  
+      }  
   }
 }
 
